@@ -17,16 +17,24 @@ library(leaflet)
 
 A partir de la informción revisada en los últimos trabajos, surge la necesidad de investigar la situación  habitacional crítica, dada la complejidad que presenta en nuestro país. 
 
-Para ello, se tomará se ahondará en la situación de los barrios populares dentro de las principales ciudades del país. En este sentido, se tomarán las capitales como principal muestra.  
-
-Esto tiene como objetivo observar donde se encuentran localizadas las situaciones urbanas más críticas con e fin de apuntalar los esfuerzos allí. 
-
+Para ello, se tomará se ahondará en la situación de los barrios populares con el objetivo de observar donde se encuentran localizadas las situaciones urbanas más críticas y mostrar donde deben apuntalarse los esfuerzos allí. 
+ 
 Para ello se extrae la base publicada por el ReNaBap de 2022:
 
 1. Bases
 ```{r}
 renabap22 <- read_sf("https://datosabiertos.desarrollosocial.gob.ar/dataset/0d022767-9390-486a-bff4-ba53b85d730e/resource/97cc7d10-ad4c-46cb-9ee4-becb402adf9f/download/2023-09-20_info_publica.geojson")
 ```
+
+
+```{r}
+ leaflet() %>%
+  addTiles() %>%
+  addPolygons(data = argentina, fillColor = "white", fillOpacity = 0.2) %>%
+  addPolygons(data = renabap22, fillColor = "red", fillOpacity = 0.6, weight = 1, color = "black")
+```
+
+El mapa muestra a grandes rasgos el emplazamiento de barrios populares en el entramado de asentamientos urbanos de la Argentina. Para analizar de manera más crítica la situación, se tomarán las ciudades capitales como muestra del país. 
 
 Seleccionamos las localidades correspondientes a las capitales provinciales. 
 
@@ -181,3 +189,9 @@ A partir de esta visualización, podemos observar que de manera general las ciud
 Este tipo de hallazgos se plasman sobre la conocida dificultad socioeconómica en dicha región  del país, y permiten disparar nuevas líneas de investigación sobre cuáles son las estructuras de desarrollo económico que generan las notables diferencias regionales. 
 
 Estos hallazgos deben interpretarse  a la luz de los trabajos anteriores, donde la condicion habitacional era inversamente proporcional a la tenencia propia de las viviendas. En este sentido, se concluye que se debe avanzar en la materia especialmente en ciudades que denotan una mayor concentración de estos problemas y ayudar así a avanzar en el desarrollo humano de la población. 
+
+
+
+
+
+
